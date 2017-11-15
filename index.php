@@ -4,7 +4,6 @@
  * @file
  * The PHP page that serves all page requests on a Drupal installation.
  * Good one.
- * Good two.
  * The routines here dispatch control to the appropriate handler, which then
  * prints the appropriate page.
  *
