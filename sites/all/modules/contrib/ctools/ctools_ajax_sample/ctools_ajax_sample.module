@@ -26,14 +26,14 @@ function ctools_ajax_sample_menu() {
     'type' => MENU_CALLBACK,
   );
   $items['ctools_ajax_sample/%ctools_js/hello'] = array(
-      'title' => 'ak_hello_world World',
+      'title' => 'hello World',
       'page callback' => 'ctools_ajax_sample_hello',
       'page arguments' => array(1),
       'access callback' => TRUE,
       'type' => MENU_CALLBACK,
   );
   $items['ctools_ajax_sample/%ctools_js/tablenix/%'] = array(
-      'title' => 'ak_hello_world World',
+      'title' => 'hello World',
       'page callback' => 'ctools_ajax_sample_tablenix',
       'page arguments' => array(1, 3),
       'access callback' => TRUE,
@@ -166,7 +166,7 @@ function ctools_ajax_sample_page() {
   $links[] = ctools_modal_text_button(t('Wizard (custom modal)'), 'ctools_ajax_sample/nojs/animal', t('Pick an animal'),  'ctools-modal-ctools-sample-style');
   $links[] = drupal_render($button_form);
 
-  $links[] = ctools_ajax_text_button(t('ak_hello_world world!'), "ctools_ajax_sample/nojs/hello", t('Replace text with "hello world"'));
+  $links[] = ctools_ajax_text_button(t('hello world!'), "ctools_ajax_sample/nojs/hello", t('Replace text with "hello world"'));
 
   $output = theme('item_list', array('items' => $links, 'title' => t('Actions')));
 
@@ -220,7 +220,7 @@ function ctools_ajax_sample_page() {
  * Returns a "take it all over" hello world style request.
  */
 function ctools_ajax_sample_hello($js = NULL) {
-  $output = '<h1>' . t('ak_hello_world World') . '</h1>';
+  $output = '<h1>' . t('hello World') . '</h1>';
   if ($js) {
     ctools_include('ajax');
     $commands = array();

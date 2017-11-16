@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Simple page content.
+ * My first page content.
  */
-function ak_hello_world_simple_page_content() {
+function ak_hello_world_my_first_page_content() {
     return 'Hello World!';
 }

@@ -7,7 +7,7 @@ function ak_hello_world_menu() {
 
     $items['my-first-page'] = array(
         'title' => 'My First Page',
-        'page callback' => 'ak_hello_world_simple_page_content',
+        'page callback' => 'ak_hello_world_my_first_page_content',
         'access callback' => TRUE,
         'menu_name' => 'main-menu',
         'file' => 'ak_hello_world.pages.inc',

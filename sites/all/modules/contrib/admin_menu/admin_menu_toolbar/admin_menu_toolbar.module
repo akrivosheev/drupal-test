@@ -111,7 +111,7 @@ function admin_menu_toolbar_admin_menu_output_alter(&$content) {
 
   // Alter user account link.
   if (isset($content['account'])) {
-    $content['account']['account']['#title'] = t('ak_hello_world <strong>@username</strong>', array('@username' => $content['account']['account']['#title']));
+    $content['account']['account']['#title'] = t('Hello <strong>@username</strong>', array('@username' => $content['account']['account']['#title']));
     $content['account']['account']['#options']['html'] = TRUE;
   }
 }
