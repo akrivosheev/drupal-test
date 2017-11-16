@@ -4117,8 +4117,8 @@ function drupal_region_class($region) {
  * @code
  *   drupal_add_js('misc/collapse.js');
  *   drupal_add_js('misc/collapse.js', 'file');
- *   drupal_add_js('jQuery(document).ready(function () { alert("Hello!"); });', 'inline');
- *   drupal_add_js('jQuery(document).ready(function () { alert("Hello!"); });',
+ *   drupal_add_js('jQuery(document).ready(function () { alert("ak_hello_world!"); });', 'inline');
+ *   drupal_add_js('jQuery(document).ready(function () { alert("ak_hello_world!"); });',
  *     array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
  *   );
  *   drupal_add_js('http://example.com/example.js', 'external');

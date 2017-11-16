@@ -1,0 +1,4 @@
+name = AK Hello World
+description = It says "Hello World!"
+core = 7.x
+package = Custom

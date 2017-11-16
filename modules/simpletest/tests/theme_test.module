@@ -151,7 +151,7 @@ function _theme_test_suggestion() {
  */
 function _theme_test_drupal_add_region_content() {
   drupal_add_region_content('content', 'World');
-  return 'Hello';
+  return 'ak_hello_world';
 }
 
 /**

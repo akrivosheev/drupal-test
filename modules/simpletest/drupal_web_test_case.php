@@ -965,7 +965,7 @@ class DrupalWebTestCase extends DrupalTestCase {
    *
    * @param $settings
    *   An associative array of settings to change from the defaults, keys are
-   *   node properties, for example 'title' => 'Hello, world!'.
+   *   node properties, for example 'title' => 'ak_hello_world, world!'.
    * @return
    *   Created node object.
    */
