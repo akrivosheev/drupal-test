@@ -6,12 +6,5 @@ sites/*/files
 sites/*/private
 
 # Ignore editor specific files.
-nbproject
-.idea
-
-# Ignore OS specific files.
-.DS_Store
-
-# Ignore SASS cache
-.sass-cache
-.sass-cache/*
+.idea/
+.idea/workspace.xml
