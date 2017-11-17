@@ -1,28 +1,10 @@
 # Ignore configuration files that may contain sensitive information.
-sites/*/*settings*.php
+sites/*/settings*.php
 
-# Ignore paths that contain generated content.
-files/
+# Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
 
-# User-specific stuff:
-.idea
+# Ignore editor specific files.
+.idea/
 .idea/workspace.xml
-.idea/tasks.xml
-.idea/dictionaries
-.idea/vcs.xml
-.idea/jsLibraryMappings.xml
-
-# Sensitive or high-churn files:
-.idea/dataSources.ids
-.idea/dataSources.xml
-.idea/dataSources.local.xml
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
-
-# Gradle:
-.idea/gradle.xml
-.idea/libraries
-gi
