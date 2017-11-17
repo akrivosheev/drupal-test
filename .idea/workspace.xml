@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="134155a1-e323-46cd-9646-54587ef2e7d0" name="Default" comment="" />
+    <list default="true" id="134155a1-e323-46cd-9646-54587ef2e7d0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info" afterPath="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +16,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="15" column="3" lean-forward="false" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+            <state relative-caret-position="378">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="e#7#327#0#PHP" expanded="true" />
               </folding>
@@ -23,21 +25,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/default/settings.php">
+      <file leaf-file-name="ak_hello_world.info" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="562" column="77" lean-forward="false" selection-start-line="562" selection-start-column="77" selection-end-line="562" selection-end-column="77" />
+            <state relative-caret-position="72">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ak_hello_world.info" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info">
+      <file leaf-file-name="ak_hello_world.module" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+            <state relative-caret-position="18">
+              <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+              <folding>
+                <element signature="e#6#42#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ak_hello_world.pages.inc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.pages.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -67,7 +81,6 @@
         <option value="$PROJECT_DIR$/sites/all/modules/hello_world/hello_world.module" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/hello_world.info" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/hello_world.module" />
-        <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_second_module/ak_secondmodule.module" />
         <option value="$PROJECT_DIR$/sites/all/modules/contrib/admin_menu/admin_menu_toolbar/admin_menu_toolbar.module" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.pages.inc" />
@@ -75,6 +88,7 @@
         <option value="$PROJECT_DIR$/sites/default/settings.php" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_second_module/ak_second_module.info" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_second_module/ak_second_module.module" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info" />
       </list>
     </option>
   </component>
@@ -139,6 +153,23 @@
               <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="test.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="custom" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="test.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="custom" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ak_hello_world" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -190,12 +221,12 @@
       <workItem from="1510674154605" duration="679000" />
       <workItem from="1510727404050" duration="2272000" />
       <workItem from="1510815434381" duration="15927000" />
-      <workItem from="1510900832856" duration="1377000" />
+      <workItem from="1510900832856" duration="1861000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20620000" />
+    <option name="totallyTimeSpent" value="21104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1723" y="143" width="1857" height="1092" extended-state="6" />
@@ -329,16 +360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="15" column="3" lean-forward="false" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding>
-            <element signature="e#7#327#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/bartik/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4752">
@@ -377,30 +398,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_second_module/ak_second_module.info" />
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.pages.inc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/default/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="562" column="77" lean-forward="false" selection-start-line="562" selection-start-column="77" selection-end-line="562" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_second_module/ak_second_module.info">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -417,10 +414,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sites/default/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="562" column="77" lean-forward="false" selection-start-line="562" selection-start-column="77" selection-end-line="562" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#327#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.pages.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#42#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+        <state relative-caret-position="72">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
