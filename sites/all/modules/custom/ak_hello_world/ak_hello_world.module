@@ -1,0 +1,49 @@
+<?php
+/**
+ * @file
+ * Show Hello world
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ak_hello_world_menu() {
+
+    $items['my-first-page'] = array(
+        'title' => 'My First Page',
+        'page callback' => 'ak_hello_world_my_first_page_content',
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'file' => 'ak_hello_world.pages.inc',
+        'options' => array('attributes' => array('class' => array('test-class'))),
+    );
+
+    $items['my-first-page/main-tab'] = array(
+        'title' => 'My first page (main tab)',
+        'page callback' => 'ak_hello_world_my_first_page_content',
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'file' => 'ak_hello_world.pages.inc',
+        'type' => MENU_DEFAULT_LOCAL_TASK,
+    );
+
+    $items['my-first-page/sub-tab1'] = array(
+        'title' => 'My first page (first sub tab)',
+        'page callback' => 'ak_hello_world_my_first_page_content_sub',
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'file' => 'ak_hello_world.pages.inc',
+        'type' => MENU_LOCAL_TASK,
+    );
+
+    $items['my-first-page/sub-tab2'] = array(
+        'title' => 'My first page (second sub tab)',
+        'page callback' => 'ak_hello_world_my_first_page_content_sub2',
+        'access callback' => TRUE,
+        'menu_name' => 'main-menu',
+        'file' => 'ak_hello_world.pages.inc',
+        'type' => MENU_LOCAL_TASK,
+    );
+
+    return $items;
+}
