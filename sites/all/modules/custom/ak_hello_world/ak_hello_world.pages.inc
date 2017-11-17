@@ -11,7 +11,7 @@ function ak_hello_world_my_first_page_content() {
  * My first page first sub tab content.
  */
 function ak_hello_world_my_first_page_content_glad() {
-  return 'Glad to see you!';
+  return 'Glad to see you.';
 }
 
 /**
