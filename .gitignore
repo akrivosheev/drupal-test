@@ -6,3 +6,5 @@ sites/*/files
 sites/*/private
 
 # Ignore editor specific files.
+.idea/
+.idea/workspace.xml
