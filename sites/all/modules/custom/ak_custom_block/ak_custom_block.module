@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Show Hello world.
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function ak_custom_block_block_info() {
+  $blocks['hello_world'] = array(
+    'info' => t('Message'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function ak_custom_block_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'hello_world':
+      $block['subject'] = t('Message');
+      $block['content'] = t('Hello world!!');
+      break;
+  }
+  return $block;
+}
