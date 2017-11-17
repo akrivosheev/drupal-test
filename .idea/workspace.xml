@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="134155a1-e323-46cd-9646-54587ef2e7d0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info" afterPath="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module" afterPath="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.pages.inc" afterPath="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.pages.inc" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +28,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ak_hello_world.info" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ak_hello_world.info" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
@@ -35,11 +38,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ak_hello_world.module" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+            <state relative-caret-position="702">
+              <caret line="39" column="63" lean-forward="false" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
               <folding>
                 <element signature="e#6#42#0#PHP" expanded="true" />
               </folding>
@@ -76,19 +89,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/sites/all/modules/hello_world/hello_world.info" />
         <option value="$PROJECT_DIR$/sites/all/modules/hello_world/hello_world.module" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/hello_world.info" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/hello_world.module" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_second_module/ak_secondmodule.module" />
         <option value="$PROJECT_DIR$/sites/all/modules/contrib/admin_menu/admin_menu_toolbar/admin_menu_toolbar.module" />
-        <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.pages.inc" />
-        <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module" />
         <option value="$PROJECT_DIR$/sites/default/settings.php" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_second_module/ak_second_module.info" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_second_module/ak_second_module.module" />
         <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.pages.inc" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -134,41 +147,6 @@
             <path>
               <item name="test.loc" type="b2602c69:ProjectViewProjectNode" />
               <item name="test.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="test.loc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="test.loc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="test.loc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="test.loc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="custom" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="test.loc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test.loc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="sites" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="all" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="modules" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="custom" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="ak_hello_world" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -221,12 +199,12 @@
       <workItem from="1510674154605" duration="679000" />
       <workItem from="1510727404050" duration="2272000" />
       <workItem from="1510815434381" duration="15927000" />
-      <workItem from="1510900832856" duration="1861000" />
+      <workItem from="1510900832856" duration="3435000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21104000" />
+    <option name="totallyTimeSpent" value="22678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1723" y="143" width="1857" height="1092" extended-state="6" />
@@ -327,6 +305,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -364,13 +343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4752">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -432,6 +404,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="39" column="63" lean-forward="false" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+          <folding>
+            <element signature="e#6#42#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.pages.inc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -440,20 +430,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.module">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-          <folding>
-            <element signature="e#6#42#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/ak_hello_world/ak_hello_world.info">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="486">
+          <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
           <folding />
         </state>
       </provider>
