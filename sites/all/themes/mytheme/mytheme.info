@@ -1,0 +1,17 @@
+name = My Theme
+description = My own theme for the site.
+version = VERSION
+core = 7.x
+
+; ---------STYLESHEETS---------
+stylesheets[all][] = css/style.css
+
+
+; ---------REGIONS---------
+regions[header] = Header
+regions[sidebar_left] = Sidebar left
+regions[content] = Content
+regions[footer] = Footer
+
+; Information added by Drupal.org packaging script on 2015-10-15
+project = "drupal"

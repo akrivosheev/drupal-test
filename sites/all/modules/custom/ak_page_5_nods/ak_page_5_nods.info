@@ -1,0 +1,4 @@
+name = AK Page 5 nods
+description = Custom Page with nods
+core = 7.x
+package = Custom
