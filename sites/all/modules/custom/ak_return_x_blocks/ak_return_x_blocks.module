@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Page show x blocks.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ak_return_x_blocks_menu() {
+  $items['x-blocks'] = array(
+    'title' => 'Page with x blocks',
+    'page callback' => 'get_x_blocks_callback',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback.
+ */
+function get_x_blocks_callback() {
+  $block = block_load('ak_custom_block', 'hello_world');
+  $content = _block_get_renderable_array(_block_render_blocks(array($block)));
+  $output = drupal_render($content);
+  $result = '';
+  if (arg(1) && arg(1) > 0) {
+    for ($i = 0; $i < arg(1); $i++) {
+      $result .= $output;
+    }
+  }
+  return theme('return_x_blocks', array('blocks' => $result));
+
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ak_return_x_blocks_theme() {
+  return array(
+    'return_x_blocks' => array(
+      'variables' => array(
+        'blocks' => NULL,
+      ),
+      'template' => 'ak_return_x_blocks',
+    ),
+  );
+}
