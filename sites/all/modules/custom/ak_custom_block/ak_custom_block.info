@@ -1,0 +1,4 @@
+name = AK Block Hello World
+description = Custom Block says "Hello World"
+core = 7.x
+package = Custom
