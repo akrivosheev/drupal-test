@@ -11,7 +11,7 @@
 function ak_page_5_nods_menu() {
   $items['5-nods'] = array(
     'title' => 'Page with 5 nods',
-    'page callback' => 'get_5_book_callback',
+    'page callback' => 'ak_page_5_nods_get_5_book_callback',
     'access callback' => TRUE,
     'type' => MENU_NORMAL_ITEM,
   );
@@ -26,7 +26,7 @@ function ak_page_5_nods_theme() {
   return array(
     'ak_page_5_nodes' => array(
       'variables' => array(
-        'body' => NULL,
+        'nodes' => NULL,
       ),
       'template' => 'ak_page_5_nodes',
     ),
@@ -36,7 +36,7 @@ function ak_page_5_nods_theme() {
 /**
  * Page callback.
  */
-function get_5_book_callback() {
+function ak_page_5_nods_get_5_book_callback() {
   $nodes = db_select('node', 'n')
     ->fields('n', array('nid', 'title', 'created'))
     ->condition('n.type', 'book')

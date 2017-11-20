@@ -1,0 +1,4 @@
+name = AK Return x blocks
+description = Return page with x quantity of blocks (x - parameter from url)
+core = 7.x
+package = Custom
