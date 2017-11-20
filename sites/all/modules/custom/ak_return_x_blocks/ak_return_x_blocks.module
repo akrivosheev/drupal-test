@@ -27,12 +27,13 @@ function get_x_blocks_callback() {
   $content = _block_get_renderable_array(_block_render_blocks(array($block)));
   $output = drupal_render($content);
   $result = '';
+  $number = 0;
   if (arg(1) && arg(1) > 0) {
-    for ($i = 0; $i < arg(1); $i++) {
+    foreach (range(1, arg(1)) as $number) {
       $result .= $output;
     }
   }
-  return theme('return_x_blocks', array('blocks' => $result));
+  return theme('return_x_blocks', array('block' => $result, 'number' => $number));
 
 }
 
@@ -43,7 +44,8 @@ function ak_return_x_blocks_theme() {
   return array(
     'return_x_blocks' => array(
       'variables' => array(
-        'blocks' => NULL,
+        'block' => NULL,
+        'number' => NULL,
       ),
       'template' => 'ak_return_x_blocks',
     ),
