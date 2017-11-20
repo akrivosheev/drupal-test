@@ -27,13 +27,15 @@ function get_x_blocks_callback() {
   $content = _block_get_renderable_array(_block_render_blocks(array($block)));
   $output = drupal_render($content);
   $result = '';
-  $number = 0;
-  if (arg(1) && arg(1) > 0) {
-    foreach (range(1, arg(1)) as $number) {
+  if (!empty(arg(1)) && arg(1) > 0) {
+    foreach (range(1, arg(1)) as $item) {
       $result .= $output;
     }
   }
-  return theme('return_x_blocks', array('block' => $result, 'number' => $number));
+  else {
+    return theme('return_x_blocks', array('block' => 'Блоков нет'));
+  }
+  return theme('return_x_blocks', array('block' => $result));
 
 }
 
