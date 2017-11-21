@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Page with form.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ak_page_form_menu() {
+
+  $items['my-form'] = array(
+    'title' => 'Form page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('author_and_cat_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback: ak page form settings.
+ *
+ * @see ak_page_form()
+ */
+function author_and_cat_form($form, &$form_state) {
+  $form['author_age'] = array(
+    '#type' => 'textfield',
+    '#title' => t("Author's age"),
+    '#default_value' => variable_get('author_age', 30),
+    '#size' => 3,
+    '#maxlength' => 3,
+    '#required' => TRUE,
+  );
+  $form['cat_legs'] = array(
+    '#type' => 'textfield',
+    '#title' => t("Max number of cat's legs"),
+    '#default_value' => variable_get('cat_legs', 4),
+    '#size' => 2,
+    '#maxlength' => 2,
+    '#required' => TRUE,
+  );
+
+  return system_settings_form($form);
+}
