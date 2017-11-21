@@ -33,9 +33,9 @@ function ak_manager_page_content() {
 function ak_manager_page_is_visible() {
   global $user;
   $access = FALSE;
-  $isEvenMinute = format_date(time(), 'custom', 'i') % 2 == 0;
-  if (in_array('manager', $user->roles) && $isEvenMinute ||
-    in_array('authenticated user', $user->roles) && !$isEvenMinute) {
+  $is_even_minute = format_date(time(), 'custom', 'i') % 2 == 0;
+  if (in_array('manager', $user->roles) && $is_even_minute ||
+    in_array('authenticated user', $user->roles) && !$is_even_minute) {
     $access = TRUE;
   }
   return $access;
