@@ -1,0 +1,4 @@
+name = Manager Page
+description = Show page to manager on even minutes
+core = 7.x
+package = Custom

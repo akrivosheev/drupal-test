@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Page show to manager on even minutes.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ak_manager_page_menu() {
+  $items['check_credentials'] = array(
+    'title' => 'Page fo manager',
+    'page callback' => 'check_role_callback',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback.
+ */
+function check_role_callback() {
+  global $user;
+  if (in_array('manager', $user->roles) && ((format_date(time(), 'custom', 'i') % 2) == 0) ||
+    in_array('authenticated user', $user->roles) && ((format_date(time(), 'custom', 'i') % 2) == 5)) {
+    return 'Чётный manager или Нечётный authenticated';
+  }
+  else {
+    drupal_access_denied();
+    drupal_exit();
+  }
+}
