@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Page show to manager on even minutes or to authenticated user on odd minutes.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ak_manager_page_menu() {
+
+  $items['check_credentials'] = array(
+    'title' => 'Manager page',
+    'page callback' => 'ak_manager_page_content',
+    'access callback' => 'ak_manager_page_is_visible',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback.
+ */
+function ak_manager_page_content() {
+  return 'Even manager or Odd authenticated user';
+}
+
+/**
+ * Access callback.
+ */
+function ak_manager_page_is_visible() {
+  global $user;
+  $access = FALSE;
+  $is_even_minute = format_date(time(), 'custom', 'i') % 2 == 0;
+  if (in_array('manager', $user->roles) && $is_even_minute ||
+    in_array('authenticated user', $user->roles) && !$is_even_minute) {
+    $access = TRUE;
+  }
+  return $access;
+}
