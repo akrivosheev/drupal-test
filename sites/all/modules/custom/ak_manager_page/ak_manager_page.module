@@ -11,8 +11,8 @@
 function ak_manager_page_menu() {
 
   $items['check_credentials'] = array(
-    'title' => 'Page fo manager',
-    'page callback' => 'ak_manager_page_callback',
+    'title' => 'Manager page',
+    'page callback' => 'ak_manager_page_content',
     'access callback' => 'ak_manager_page_check_role',
     'type' => MENU_NORMAL_ITEM,
   );
@@ -23,19 +23,23 @@ function ak_manager_page_menu() {
 /**
  * Page callback.
  */
-function ak_manager_page_callback() {
-  return 'Чётный manager или Нечётный authenticated';
+function ak_manager_page_content() {
+  return 'Even manager or Odd authenticated user';
 }
 
 /**
- * Page callback.
+ * Access callback.
  */
 function ak_manager_page_check_role() {
-  $access = FALSE;
   global $user;
-  if (in_array('manager', $user->roles) && ((format_date(time(), 'custom', 'i') % 2) == 0) ||
-    in_array('authenticated user', $user->roles) && ((format_date(time(), 'custom', 'i') % 2) == 5)) {
-    $access = TRUE;
+  $minute = format_date(time(), 'custom', 'i');
+  // Here we check if user is manager and minute is even number.
+  if (in_array('manager', $user->roles) && $minute % 2 == 0) {
+    return TRUE;
   }
-  return $access;
+  // Here we check if user is authenticated and minute is odd number.
+  if (in_array('authenticated user', $user->roles) && $minute % 2 == 5) {
+    return TRUE;
+  }
+  return FALSE;
 }
