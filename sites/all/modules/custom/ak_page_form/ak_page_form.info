@@ -1,5 +1,5 @@
 name = Form Page
-description = Page with page
+description = Page with form
 links = http://test.loc/my-form
 core = 7.x
 package = Custom
