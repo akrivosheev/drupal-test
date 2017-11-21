@@ -9,16 +9,11 @@
  * Implements hook_menu().
  */
 function ak_manager_page_menu() {
-  $access = FALSE;
-  global $user;
-  if (in_array('manager', $user->roles) && ((format_date(time(), 'custom', 'i') % 2) == 0) ||
-    in_array('authenticated user', $user->roles) && ((format_date(time(), 'custom', 'i') % 2) == 5)) {
-    $access = TRUE;
-  }
+
   $items['check_credentials'] = array(
     'title' => 'Page fo manager',
-    'page callback' => 'check_role_callback',
-    'access callback' => $access,
+    'page callback' => 'ak_manager_page_callback',
+    'access callback' => 'ak_manager_page_check_role',
     'type' => MENU_NORMAL_ITEM,
   );
 
@@ -28,6 +23,19 @@ function ak_manager_page_menu() {
 /**
  * Page callback.
  */
-function check_role_callback() {
+function ak_manager_page_callback() {
   return 'Чётный manager или Нечётный authenticated';
+}
+
+/**
+ * Page callback.
+ */
+function ak_manager_page_check_role() {
+  $access = FALSE;
+  global $user;
+  if (in_array('manager', $user->roles) && ((format_date(time(), 'custom', 'i') % 2) == 0) ||
+    in_array('authenticated user', $user->roles) && ((format_date(time(), 'custom', 'i') % 2) == 5)) {
+    $access = TRUE;
+  }
+  return $access;
 }
