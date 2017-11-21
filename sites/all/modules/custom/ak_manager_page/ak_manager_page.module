@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Page show to manager on even minutes.
+ * Page show to manager on even minutes or to authenticated user on odd minutes.
  */
 
 /**
@@ -13,7 +13,7 @@ function ak_manager_page_menu() {
   $items['check_credentials'] = array(
     'title' => 'Manager page',
     'page callback' => 'ak_manager_page_content',
-    'access callback' => 'ak_manager_page_check_role',
+    'access callback' => 'ak_manager_page_is_visible',
     'type' => MENU_NORMAL_ITEM,
   );
 
@@ -30,16 +30,17 @@ function ak_manager_page_content() {
 /**
  * Access callback.
  */
-function ak_manager_page_check_role() {
+function ak_manager_page_is_visible() {
   global $user;
-  $minute = format_date(time(), 'custom', 'i');
+  $access = FALSE;
+  $minute = format_date(time(), 'custom', 'i') % 2;
   // Here we check if user is manager and minute is even number.
-  if (in_array('manager', $user->roles) && $minute % 2 == 0) {
-    return TRUE;
+  if (in_array('manager', $user->roles) && $minute == 0) {
+    $access = TRUE;
   }
   // Here we check if user is authenticated and minute is odd number.
-  if (in_array('authenticated user', $user->roles) && $minute % 2 == 5) {
-    return TRUE;
+  if (in_array('authenticated user', $user->roles) && $minute == 5) {
+    $access = TRUE;
   }
-  return FALSE;
+  return $access;
 }
