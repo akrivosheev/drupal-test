@@ -1,0 +1,116 @@
+<?php
+
+/**
+ * @file
+ * Page with form.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ak_cities_menu() {
+
+  $items['cities'] = array(
+    'title' => 'Cities page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ak_cities_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * A form with two selects.
+ */
+function ak_cities_form($form, &$form_state) {
+  $options_first = ak_cities_first_dropdown_options();
+  $value_country = isset($form_state['values']['country']) ? $form_state['values']['country'] : key($options_first);
+
+  $form['country'] = array(
+    '#type' => 'select',
+    '#title' => 'Country',
+    '#options' => $options_first,
+    '#default_value' => $value_country,
+    '#ajax' => array(
+      'event' => 'change',
+      'callback' => 'ak_cities_ajax_callback',
+  // Tells the Form system what callback should be called
+  // after the Ajax call happens and the form is rebuilt.
+      'wrapper' => 'city_replace',
+  // Wrapper includes the HTML ID of a page section that should be replaced.
+    ),
+  );
+  $form['city'] = array(
+    '#type' => 'select',
+    '#title' => 'City',
+    '#prefix' => '<div id="city_replace">',
+    '#suffix' => '</div>',
+  // Here is HTML ID.
+    '#options' => ak_cities_second_dropdown_options($value_country),
+    '#default_value' => isset($form_state['values']['city']) ? $form_state['values']['city'] : '',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send'),
+  );
+
+  return $form;
+}
+
+/**
+ * Selects just the second dropdown to be returned for re-rendering.
+ */
+function ak_cities_ajax_callback($form, $form_state) {
+  return $form['city'];
+}
+
+/**
+ * Helper function to populate the country dropdown.
+ */
+function ak_cities_first_dropdown_options() {
+
+  $country_terms = taxonomy_get_tree(2);
+  foreach ($country_terms as $data) {
+    $country_list[$data->tid] = $data->name;
+  }
+  return $country_list;
+}
+
+/**
+ * Helper function to populate the city dropdown.
+ *
+ * @param string $key
+ *   Entity Id of selected country.
+ *
+ * @return city_list
+ *   List of cities for selected country.
+ */
+function ak_cities_second_dropdown_options($key = '') {
+  $nodes = db_select('taxonomy_term_data', 't');
+  $nodes->join('field_data_field_country', 'f', 'f.entity_id = t.tid');
+  $nodes->condition('field_country_tid', $key);
+  $nodes->fields('t', array('tid', 'name'));
+  $result = $nodes
+    ->execute()
+    ->fetchAllKeyed();
+  return $result;
+}
+
+/**
+ * Submit function for email_and_username_form.
+ *
+ * @see ak_page_form()
+ */
+function ak_cities_form_submit($form, &$form_state) {
+  $country = $form_state['values']['country'];
+  $city = $form_state['values']['city'];
+  watchdog(
+    'ak_contact',
+    'Country: @country, City: @city',
+    array('@country' => $country, '@city' => $city)
+  );
+  drupal_set_message(t('Your data have been saved, check logs'));
+}
