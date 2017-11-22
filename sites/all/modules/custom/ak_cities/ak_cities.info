@@ -1,0 +1,4 @@
+name = Cities Page
+description = Page with Cities
+core = 7.x
+package = Custom
