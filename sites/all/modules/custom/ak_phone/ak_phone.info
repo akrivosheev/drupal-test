@@ -1,0 +1,4 @@
+name = Phone adding
+description = This module add phone to book form
+core = 7.x
+package = Custom

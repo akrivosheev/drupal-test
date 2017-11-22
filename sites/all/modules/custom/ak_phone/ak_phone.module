@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Page with form.
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function ak_phone_form_book_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['phone'] = array(
+    '#type' => 'textfield',
+    '#title' => t("Phone number"),
+    '#default_value' => ak_phone_get_number(),
+    '#size' => 30,
+    '#maxlength' => 30,
+    '#required' => TRUE,
+  );
+}
+
+/**
+ * Get phone number of current node.
+ */
+function ak_phone_get_number() {
+  $result = db_select('ak_phone_table', 'c')
+    ->fields('c', array('nid', 'number'))
+    ->condition('c.nid', arg(1))
+    ->execute()
+    ->fetchAssoc();
+  return $result['number'];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ak_phone_node_insert($node) {
+  db_insert('ak_phone_table')
+    ->fields(array(
+      'nid' => $node->nid,
+      'number' => $node->phone,
+    ))
+    ->execute();
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function ak_phone_node_update($node) {
+  db_update('ak_phone_table')
+    ->fields(array('number' => $node->phone))
+    ->condition('nid', $node->nid)
+    ->execute();
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function ak_phone_node_delete($node) {
+  db_delete('ak_phone_table')
+    ->condition('nid', $node->nid)
+    ->execute();
+}
