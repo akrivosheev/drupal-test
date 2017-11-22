@@ -59,10 +59,12 @@ function ak_phone_node_update($node) {
   if (empty($result)) {
     ak_phone_node_insert($node);
   }
-  db_update('ak_phone_table')
-    ->fields(array('number' => $node->phone))
-    ->condition('nid', $node->nid)
-    ->execute();
+  else {
+    db_update('ak_phone_table')
+      ->fields(array('number' => $node->phone))
+      ->condition('nid', $node->nid)
+      ->execute();
+  }
 }
 
 /**
