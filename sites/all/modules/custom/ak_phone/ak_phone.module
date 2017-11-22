@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_id_alter().
  */
 function ak_phone_form_book_node_form_alter(&$form, &$form_state, $form_id) {
   $form['phone'] = array(
@@ -23,9 +23,13 @@ function ak_phone_form_book_node_form_alter(&$form, &$form_state, $form_id) {
  * Get phone number of current node.
  */
 function ak_phone_get_number() {
+  $nid = 0;
+  if (is_numeric(arg(1))) {
+    $nid = arg(1);
+  }
   $result = db_select('ak_phone_table', 'c')
     ->fields('c', array('nid', 'number'))
-    ->condition('c.nid', arg(1))
+    ->condition('c.nid', $nid)
     ->execute()
     ->fetchAssoc();
   return $result['number'];
@@ -47,6 +51,14 @@ function ak_phone_node_insert($node) {
  * Implements hook_node_update().
  */
 function ak_phone_node_update($node) {
+  $result = db_select('ak_phone_table', 'c')
+    ->fields('c', array('nid'))
+    ->condition('c.nid', $node->nid)
+    ->execute()
+    ->fetchCol();
+  if (empty($result)) {
+    ak_phone_node_insert($node);
+  }
   db_update('ak_phone_table')
     ->fields(array('number' => $node->phone))
     ->condition('nid', $node->nid)
