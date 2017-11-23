@@ -16,18 +16,7 @@ function ak_phone_form_book_node_form_alter(&$form, &$form_state, $form_id) {
     '#size' => 30,
     '#maxlength' => 30,
     '#required' => TRUE,
-    '#description' => '12 digits',
   );
-  $form['#validate'][] = 'ak_phone_form_validate';
-}
-
-/**
- * Implements hook_form_validate().
- */
-function ak_phone_form_validate(&$form, &$form_state) {
-  if (!preg_match('/^\+375(29|25|44|33)(\d{7})/', $form_state['values']['phone'])) {
-    form_set_error('phone', 'Number is not valid');
-  }
 }
 
 /**
@@ -43,7 +32,7 @@ function ak_phone_get_number() {
     ->condition('c.nid', $nid)
     ->execute()
     ->fetchAssoc();
-  return '+' . $result['number'];
+  return $result['number'];
 }
 
 /**
@@ -53,7 +42,7 @@ function ak_phone_node_insert($node) {
   db_insert('ak_phone_table')
     ->fields(array(
       'nid' => $node->nid,
-      'number' => mb_substr($node->phone, 1),
+      'number' => $node->phone,
     ))
     ->execute();
 }
@@ -72,7 +61,7 @@ function ak_phone_node_update($node) {
   }
   else {
     db_update('ak_phone_table')
-      ->fields(array('number' => mb_substr($node->phone, 1)))
+      ->fields(array('number' => $node->phone))
       ->condition('nid', $node->nid)
       ->execute();
   }

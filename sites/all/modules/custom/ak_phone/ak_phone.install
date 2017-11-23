@@ -27,6 +27,7 @@ function ak_phone_schema() {
       'number' => array(
         'description' => 'Field for telephone number.',
         'type' => 'int',
+        'size' => 'big',
         'unsigned' => TRUE,
         'not null' => TRUE,
         'default' => 0,
