@@ -1,0 +1,4 @@
+name = Custom Form Page
+description = Page with custom form
+core = 7.x
+package = Custom

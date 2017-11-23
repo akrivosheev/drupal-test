@@ -36,10 +36,10 @@ function ak_cities_form($form, &$form_state) {
     '#ajax' => array(
       'event' => 'change',
       'callback' => 'ak_cities_ajax_callback',
-  // Tells the Form system what callback should be called
-  // after the Ajax call happens and the form is rebuilt.
+      // Tells the Form system what callback should be called
+      // after the Ajax call happens and the form is rebuilt.
       'wrapper' => 'city_replace',
-  // Wrapper includes the HTML ID of a page section that should be replaced.
+      // Wrapper includes the HTML ID of a page section that should be replaced.
     ),
   );
   $form['city'] = array(
@@ -47,7 +47,7 @@ function ak_cities_form($form, &$form_state) {
     '#title' => 'City',
     '#prefix' => '<div id="city_replace">',
     '#suffix' => '</div>',
-  // Here is HTML ID.
+    // Here is HTML ID.
     '#options' => ak_cities_second_dropdown_options($value_country),
     '#default_value' => isset($form_state['values']['city']) ? $form_state['values']['city'] : '',
   );
