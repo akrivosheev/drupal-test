@@ -16,7 +16,22 @@ function ak_phone_form_book_node_form_alter(&$form, &$form_state, $form_id) {
     '#size' => 30,
     '#maxlength' => 30,
     '#required' => TRUE,
+    '#description' => 'write number in this form 375291112233 (without "+")',
   );
+  $form['#validate'][] = 'ak_phone_form_validate';
+
+  drupal_add_js(drupal_get_path('module', 'ak_phone') . '/js/jquery.maskedinput.js');
+  drupal_add_js(drupal_get_path('module', 'ak_phone') . '/js/userreg.js');
+}
+
+/**
+ * Implements hook_form_validate().
+ */
+function ak_phone_form_validate(&$form, &$form_state) {
+
+  if (!preg_match('/^375(29|25|44|33)(\d{7})/', $form_state['values']['phone'])) {
+    form_set_error('phone', 'Number is not valid');
+  }
 }
 
 /**
