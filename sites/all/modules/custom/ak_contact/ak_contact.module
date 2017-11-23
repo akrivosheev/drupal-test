@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Page with form.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ak_contact_menu() {
+
+  $items['contact'] = array(
+    'title' => 'Contact page',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('email_and_username_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback: ak page form settings.
+ *
+ * @see ak_page_form()
+ */
+function email_and_username_form($form, &$form_state) {
+  $form['username'] = array(
+    '#type' => 'textfield',
+    '#title' => t("Username"),
+    '#default_value' => 'username',
+    '#size' => 30,
+    '#maxlength' => 30,
+    '#required' => TRUE,
+  );
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => t("Email"),
+    '#default_value' => 'exsample@mail.com',
+    '#size' => 30,
+    '#maxlength' => 30,
+    '#required' => TRUE,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit function for email_and_username_form.
+ *
+ * @see ak_page_form()
+ */
+function email_and_username_form_submit($form, &$form_state) {
+  $name = $form_state['values']['username'];
+  $email = $form_state['values']['email'];
+  watchdog(
+    'ak_contact',
+    'Name: @name, Email: @email',
+    array('@name' => $name, '@email' => $email)
+  );
+  drupal_set_message(t('Your data have been saved, check logs'));
+}
