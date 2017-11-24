@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Add 5 countries.
+ */
+
+/**
+ * Implements hook_update_N().
+ */
+function ak_5_countries_update_7103() {
+  $countries = array('Argentina', 'Brazil', 'Canada', 'Mexico', 'Spain');
+  foreach ($countries as $country) {
+    ak_5_countries_save_term($country);
+  }
+}
+
+/**
+ * Save term.
+ */
+function ak_5_countries_save_term($country) {
+  $term = (object) array(
+    'vid' => 2,
+    // Vid vocabulary country.
+    'name' => $country,
+    'description' => '',
+    'format' => 'filtered_html',
+  );
+  taxonomy_term_save($term);
+}
