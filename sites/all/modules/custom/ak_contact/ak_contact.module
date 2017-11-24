@@ -10,14 +10,6 @@
  */
 function ak_contact_menu() {
 
-  $items['contact'] = array(
-    'title' => 'Contact page',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('email_and_username_form'),
-    'access callback' => TRUE,
-    'type' => MENU_NORMAL_ITEM,
-  );
-
   $items['contact/ajax'] = array(
     'page callback' => 'drupal_get_form',
     'page arguments' => array('ak_contact_form'),
