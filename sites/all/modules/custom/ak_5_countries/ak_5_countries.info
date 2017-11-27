@@ -1,0 +1,4 @@
+name = AK 5 countries
+description = This module adding 5 countries.
+package = Custom
+core = 7.x
