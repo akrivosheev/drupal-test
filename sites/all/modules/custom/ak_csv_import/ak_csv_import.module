@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * @file
+ * Ak_csv_import_menu.
+ */
+
+define('AK_CSV_IMPORT_FILE_PATH', 'sites/all/files/countries.csv');
+
+/**
+ * Implements hook_menu().
+ */
+function ak_csv_import_menu() {
+  $items['import-large-csv'] = array(
+    'title' => 'Import CSV',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ak_csv_import_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    'menu_name' => 'main-menu',
+  );
+  return $items;
+}
+
+/**
+ * CSV import form.
+ */
+function ak_csv_import_form() {
+  $form = array();
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Start import'),
+  );
+
+  return $form;
+}
+
+/**
+ * CSV import start.
+ */
+function ak_csv_import_form_submit($form, &$form_state) {
+  $batch = array(
+    'operations' => array(
+      array('ak_csv_import_test_operation', array()),
+    ),
+    'finished' => 'batch_example_finished',
+    'title' => t('Processing CSV'),
+    'init_message' => t('CSV Batch is starting.'),
+    'progress_message' => t('Processed @current out of @total.'),
+    'error_message' => t('CSV Batch has encountered an error.'),
+  );
+  batch_set($batch);
+}
+
+/**
+ * CSV test operation.
+ */
+function ak_csv_import_test_operation(&$context) {
+
+  if (!isset($handle)) {
+    $file = AK_CSV_IMPORT_FILE_PATH;
+    $handle = fopen($file, "r");
+    fseek($handle, $context['sandbox']['position']);
+  }
+  fgetcsv($handle);
+  while ($data = fgetcsv($handle, 1000, " ", " ")) {
+    // Add term from CSV file.
+    $term = (object) array(
+      'vid' => 2,
+      // Vid vocabulary country.
+      'name' => $data[1],
+      'description' => '',
+      'format' => 'filtered_html',
+    );
+    taxonomy_term_save($term);
+    $context['sandbox']['progress']++;
+  }
+
+  $context['sandbox']['position'] = ftell($handle);
+
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+}
