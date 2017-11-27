@@ -1,0 +1,4 @@
+name = AK 5 books
+description = This module adding 5 books.
+package = Custom
+core = 7.x
