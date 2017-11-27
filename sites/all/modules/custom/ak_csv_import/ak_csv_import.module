@@ -1,0 +1,132 @@
+<?php
+
+/**
+ * @file
+ * Ak_csv_import_menu.
+ */
+
+define('AK_CSV_IMPORT_FILE_PATH', 'sites/default/files/countries.csv');
+
+/**
+ * Implements hook_menu().
+ */
+function ak_csv_import_menu() {
+  $items['import-csv'] = array(
+    'title' => 'Import CSV',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ak_csv_import_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    'menu_name' => 'main-menu',
+  );
+  return $items;
+}
+
+/**
+ * CSV import form.
+ */
+function ak_csv_import_form() {
+  $form = array();
+  $form['file'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'file',
+    '#description' => 'Choose file with extension csv',
+    '#upload_location' => 'public://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array('csv'),
+    ),
+    '#default_value' => variable_get('ak_csv_import'),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Start import'),
+  );
+
+  return $form;
+}
+
+/**
+ * Form validate callback.
+ */
+function ak_csv_import_validate($form, &$form_state) {
+  $validators = array(
+    'file_validate_extensions' => array('csv'),
+  );
+
+  if ($file = file_save_upload('file', $validators, 'public://')) {
+    $form_state['values']['file'] = $file;
+  }
+  else {
+    form_set_error('file', 'File was not uploaded');
+  }
+}
+
+/**
+ * CSV import start.
+ */
+function ak_csv_import_form_submit($form, &$form_state) {
+
+  // Delete old file.
+  $old_file_fid = variable_get('ak_csv_import');
+  if ($old_file_fid && $old_file_fid != $form_state['values']['file']) {
+    $old_file = file_load($old_file_fid);
+    file_usage_delete($old_file, 'ak_csv_import');
+    file_delete($old_file);
+  }
+
+  // Save new file.
+  $file = file_load($form_state['values']['file']);
+  file_save($file);
+  file_usage_add($file, 'ak_csv_import', 'ak_csv_import', 0);
+  variable_set('ak_csv_import', $file->fid);
+
+  $batch = array(
+    'operations' => array(
+      array('ak_csv_import_test_operation', array()),
+    ),
+    'finished' => 'batch_example_finished',
+    'title' => t('Processing CSV'),
+    'init_message' => t('CSV Batch is starting.'),
+    'progress_message' => t('Processed @current out of @total.'),
+    'error_message' => t('CSV Batch has encountered an error.'),
+  );
+  batch_set($batch);
+}
+
+/**
+ * CSV test operation.
+ */
+function ak_csv_import_test_operation(&$context) {
+
+  if (!isset($handle)) {
+    $file = AK_CSV_IMPORT_FILE_PATH;
+    $handle = fopen($file, "r");
+    fseek($handle, $context['sandbox']['position']);
+  }
+  fgetcsv($handle);
+  while ($data = fgetcsv($handle, 1000, " ", " ")) {
+    // Add term from CSV file.
+    ak_csv_import_save_term($data[1]);
+    $context['sandbox']['progress']++;
+  }
+
+  $context['sandbox']['position'] = ftell($handle);
+
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+}
+
+/**
+ * Save term.
+ */
+function ak_csv_import_save_term($country) {
+  $term = (object) array(
+    'vid' => 2,
+    // Vid vocabulary country.
+    'name' => $country,
+    'description' => '',
+    'format' => 'filtered_html',
+  );
+  taxonomy_term_save($term);
+}
