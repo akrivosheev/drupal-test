@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Add 5 books.
+ */
+
+/**
+ * Implements hook_update_N().
+ */
+function ak_5_books_update_7105() {
+  $books = array(
+    array(
+      'title' => 'two towers',
+      'description' => 'story about...',
+      'author' => 'Pushkin',
+      'phone' => 80445613069,
+      'text' => 'Содержание книги',
+      'summary' => 'Текст анонса',
+    ),
+    array(
+      'title' => 'three towers',
+      'description' => 'story about...',
+      'author' => 'Pushkin',
+      'phone' => 80445613069,
+      'text' => 'Содержание книги',
+      'summary' => 'Текст анонса',
+    ),
+    array(
+      'title' => 'four towers',
+      'description' => 'story about...',
+      'author' => 'Pushkin',
+      'phone' => 80445613069,
+      'text' => 'Содержание книги',
+      'summary' => 'Текст анонса',
+    ),
+    array(
+      'title' => 'five towers',
+      'description' => 'story about...',
+      'author' => 'Pushkin',
+      'phone' => 80445613069,
+      'text' => 'Содержание книги',
+      'summary' => 'Текст анонса',
+    ),
+    array(
+      'title' => 'six towers',
+      'description' => 'story about...',
+      'author' => 'Pushkin',
+      'phone' => 80445613069,
+      'text' => 'Содержание книги',
+      'summary' => 'Текст анонса',
+    ),
+  );
+  foreach ($books as $book) {
+    ak_5_books_save_nod($book);
+  }
+}
+
+/**
+ * Save term.
+ */
+function ak_5_books_save_nod($book) {
+  $node = new stdClass();
+  $node->type = 'book';
+  node_object_prepare($node);
+  $node->title = $book['title'];
+  $node->phone = $book['phone'];
+  $node->language = LANGUAGE_NONE;
+  $node->body[LANGUAGE_NONE][0]['value'] = $book['text'];
+  $node->body[LANGUAGE_NONE][0]['summary'] = $book['summary'];
+  $node->body[LANGUAGE_NONE][0]['format'] = 'filtered_html';
+  node_save($node);
+}
