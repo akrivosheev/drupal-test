@@ -1,0 +1,5 @@
+name = AK add_cities
+description = This module is add cities.
+package = Custom
+core = 7.x
+files[] = "CitiesMigration.inc"
