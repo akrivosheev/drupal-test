@@ -27,7 +27,7 @@ class CitiesMigration extends TermsMigration {
       2 => array('country_id', t('Country id')),
     );
     $this->source = new MigrateSourceCSV(
-      'sites/default/files/cities.csv',
+      drupal_get_path('module', 'ak_terms') . '/sites/default/files/cities.csv',
       $this->columns,
       array('delimiter' => ',', 'header_rows' => 1));
 
