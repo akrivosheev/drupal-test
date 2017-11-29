@@ -41,7 +41,6 @@ class CitiesMigration extends Migration {
           'type' => 'varchar',
           'size' => 6,
           'not null' => TRUE,
-          'unsigned' => TRUE,
         ),
       ),
       MigrateDestinationTerm::getKeySchema()
@@ -51,8 +50,8 @@ class CitiesMigration extends Migration {
 
     $this->addFieldMapping('field_country', 'country_id')
       ->sourceMigration('Countries');
-//    $this->addFieldMapping('field_country:source_type')
-//      ->defaultValue('tid');
+    $this->addFieldMapping('field_country:source_type')
+      ->defaultValue('tid');
 
   }
 
@@ -85,7 +84,6 @@ class CountriesMigration extends Migration {
         'term_id' => array(
           'type' => 'varchar',
           'size' => 6,
-          'unsigned' => TRUE,
           'not null' => TRUE,
         ),
       ),

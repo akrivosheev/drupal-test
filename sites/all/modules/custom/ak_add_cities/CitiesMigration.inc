@@ -20,6 +20,7 @@ class CitiesMigration extends Migration {
     $this->columns = array(
       0 => array('term_id', t('Term id')),
       1 => array('term_name', t('Term name')),
+      2 => array('country_id', t('Country id')),
     );
 
     $this->source = new MigrateSourceCSV(
@@ -41,6 +42,15 @@ class CitiesMigration extends Migration {
 
     $this->destination = new MigrateDestinationTerm('cities');
     $this->addFieldMapping('name', 'term_name');
+
+    $this->addFieldMapping('field_country', 'country_id')
+      ->sourceMigration('Countries');
+    $this->addFieldMapping('field_country:source_type')
+      ->defaultValue('tid');
+
+//    $this->addFieldMapping('field_country', 'country_id');
+//    $this->addFieldMapping('field_country:create_term')
+//      ->defaultValue(TRUE);
   }
 
 }
