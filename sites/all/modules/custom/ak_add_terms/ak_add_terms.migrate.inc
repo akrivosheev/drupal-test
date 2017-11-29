@@ -24,10 +24,6 @@ function ak_add_terms_migrate_api() {
         'class_name' => 'CitiesMigration',
         'group_name' => 'cities',
       ),
-      'Cities2' => array(
-        'class_name' => 'Cities2Migration',
-        'group_name' => 'cities',
-      ),
       'Countries' => array(
         'class_name' => 'CountriesMigration',
         'group_name' => 'countries',

@@ -14,7 +14,7 @@ abstract class TermsMigration extends Migration {
 /**
  * Class CitiesMigration.
  */
-class CitiesMigration extends TermsMigration {
+class CitiesMigration extends Migration {
 
   /**
    * CitiesMigration constructor.
@@ -34,26 +34,25 @@ class CitiesMigration extends TermsMigration {
       $this->columns,
       array('delimiter' => ' ', 'header_rows' => 1));
 
+    $this->destination = new MigrateDestinationTerm('cities');
     $this->map = new MigrateSQLMap($this->machineName,
       array(
         'term_id' => array(
-          'type' => 'int',
-          'length' => 10,
+          'type' => 'varchar',
+          'size' => 6,
           'not null' => TRUE,
           'unsigned' => TRUE,
-          'description' => 'Term id',
         ),
       ),
       MigrateDestinationTerm::getKeySchema()
     );
 
-    $this->destination = new MigrateDestinationTerm('cities');
     $this->addFieldMapping('name', 'term_name');
 
     $this->addFieldMapping('field_country', 'country_id')
-      ->sourceMigration('Cities');
-    $this->addFieldMapping('field_country:source_type')
-      ->defaultValue('tid');
+      ->sourceMigration('Countries');
+//    $this->addFieldMapping('field_country:source_type')
+//      ->defaultValue('tid');
 
   }
 
@@ -62,7 +61,7 @@ class CitiesMigration extends TermsMigration {
 /**
  * Class CountriesMigration.
  */
-class CountriesMigration extends TermsMigration {
+class CountriesMigration extends Migration {
 
   /**
    * CountriesMigration constructor.
@@ -84,7 +83,8 @@ class CountriesMigration extends TermsMigration {
     $this->map = new MigrateSQLMap($this->machineName,
       array(
         'term_id' => array(
-          'type' => 'int',
+          'type' => 'varchar',
+          'size' => 6,
           'unsigned' => TRUE,
           'not null' => TRUE,
         ),
