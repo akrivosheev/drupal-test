@@ -1,0 +1,5 @@
+name = AK terms
+description = This module is add terms.
+package = Custom
+core = 7.x
+files[] = "TermsMigration.inc"
