@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Show Ak Date.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function ak_date_theme($existing, $type, $theme, $path) {
+  return [
+    'ak_date_example_first' => [
+      'variables' => [],
+    ],
+  ];
+}

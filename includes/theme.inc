@@ -80,7 +80,7 @@ function drupal_theme_initialize() {
 
   // Only select the user selected theme if it is available in the
   // list of themes that can be accessed.
-  $theme = !empty($user->theme) && drupal_theme_access($user->theme) ? $user->theme : variable_get('theme_default', 'bartik');
+  $theme = !empty($user->theme) && drupal_theme_access($user->theme) ? $user->theme : variable_get('theme_default', 'barsik');
 
   // Allow modules to override the theme. Validation has already been performed
   // inside menu_get_custom_theme(), so we do not need to check it again here.
@@ -505,7 +505,7 @@ class ThemeRegistry Extends DrupalCacheArray {
  *   The loaded $theme object as returned from list_themes().
  * @param $path
  *   The directory where $name is. For example, modules/system or
- *   themes/bartik.
+ *   themes/barsik.
  *
  * @see theme()
  * @see _theme_build_registry()
@@ -746,7 +746,7 @@ function _theme_build_registry($theme, $base_theme, $theme_engine) {
  *   - stylesheets: A two dimensional array, using the first key for the
  *     media attribute (e.g. 'all'), the second for the name of the file
  *     (e.g. style.css). The value is a complete filepath (e.g.
- *     themes/bartik/style.css). Not set if no stylesheets are defined in the
+ *     themes/barsik/style.css). Not set if no stylesheets are defined in the
  *     .info file.
  *   - scripts: An associative array of JavaScripts, using the filename as key
  *     and the complete filepath as value. Not set if no scripts are defined in
@@ -897,7 +897,7 @@ function drupal_find_base_themes($themes, $key, $used_keys = array()) {
  * implementation, but it is more common for themes to override default
  * implementations provided by modules than to register entirely new theme
  * hooks. Themes can override a default implementation by implementing a
- * function named THEME_HOOK() (for example, the 'bartik' theme overrides the
+ * function named THEME_HOOK() (for example, the 'barsik' theme overrides the
  * default implementation of the 'menu_tree' theme hook by implementing a
  * bartik_menu_tree() function), or by adding a template file within its folder
  * structure that follows the template naming structure used by the theme's
@@ -1628,7 +1628,7 @@ function theme_enable($theme_list) {
  */
 function theme_disable($theme_list) {
   // Don't disable the default theme.
-  if ($pos = array_search(variable_get('theme_default', 'bartik'), $theme_list) !== FALSE) {
+  if ($pos = array_search(variable_get('theme_default', 'barsik'), $theme_list) !== FALSE) {
     unset($theme_list[$pos]);
     if (empty($theme_list)) {
       return;

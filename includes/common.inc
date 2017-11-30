@@ -3114,7 +3114,7 @@ function drupal_add_css($data = NULL, $options = NULL) {
  * module styles through CSS selectors.
  *
  * Themes may replace module-defined CSS files by adding a stylesheet with the
- * same filename. For example, themes/bartik/system-menus.css would replace
+ * same filename. For example, themes/barsik/system-menus.css would replace
  * modules/system/system-menus.css. This allows themes to override complete
  * CSS files, rather than specific selectors, when necessary.
  *
@@ -7455,7 +7455,7 @@ function drupal_write_record($table, &$record, $primary_keys = array()) {
  * - stylesheets: Theme stylesheets; e.g., stylesheets[all][] = my-style.css.
  * - scripts: Theme scripts; e.g., scripts[] = my-script.js.
  *
- * See bartik.info for an example of a theme .info file.
+ * See barsik.info for an example of a theme .info file.
  *
  * @param $filename
  *   The file we are parsing. Accepts file with relative or absolute path.
