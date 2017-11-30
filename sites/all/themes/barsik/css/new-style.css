@@ -5,3 +5,11 @@
     margin: 0 10px;
     padding: 0;
 }
+
+.day {
+    color: #c6ce50;
+}
+
+.night {
+    color: #122a84;
+}
