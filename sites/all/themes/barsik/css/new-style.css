@@ -1,0 +1,7 @@
+/* Region barsik. */
+.barsik {
+    font-size: 0.957em;
+    float: right; /* LTR */
+    margin: 0 10px;
+    padding: 0;
+}
