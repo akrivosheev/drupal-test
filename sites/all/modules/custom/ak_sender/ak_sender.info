@@ -1,0 +1,4 @@
+name = AK SEND MAIL
+description = This module is send email.
+package = Custom
+core = 7.x
