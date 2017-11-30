@@ -1,0 +1,4 @@
+name = AK BIRTHDAY sender
+description = This module is send email to users, who has BIRTHDAY.
+package = Custom
+core = 7.x
