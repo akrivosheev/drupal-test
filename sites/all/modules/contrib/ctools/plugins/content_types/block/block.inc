@@ -419,7 +419,7 @@ function block_ctools_block_info($module, $delta, &$info) {
     $block_info_cache = db_select('block', 'b')
       ->fields('b')
       ->condition('b.module', 'block')
-      ->condition('b.theme', variable_get('theme_default', 'bartik'))
+      ->condition('b.theme', variable_get('theme_default', 'barsik'))
       ->addTag('block_load')
       ->addTag('translatable')
       ->execute()

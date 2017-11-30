@@ -1,0 +1,4 @@
+name = AK Date
+description = It show date
+core = 7.x
+package = Custom

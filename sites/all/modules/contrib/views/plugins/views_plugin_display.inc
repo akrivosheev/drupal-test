@@ -1880,7 +1880,7 @@ class views_plugin_display extends views_plugin {
           $this->theme = $_POST['theme'];
         }
         elseif (empty($this->theme)) {
-          $this->theme = variable_get('theme_default', 'bartik');
+          $this->theme = variable_get('theme_default', 'barsik');
         }
 
         if (isset($GLOBALS['theme']) && $GLOBALS['theme'] == $this->theme) {

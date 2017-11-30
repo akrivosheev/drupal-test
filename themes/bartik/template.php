@@ -84,7 +84,7 @@ function bartik_preprocess_maintenance_page(&$variables) {
   if (!$variables['db_is_active']) {
     $variables['site_name'] = '';
   }
-  drupal_add_css(drupal_get_path('theme', 'bartik') . '/css/maintenance-page.css');
+  drupal_add_css(drupal_get_path('theme', 'barsik') . '/css/maintenance-page.css');
 }
 
 /**

@@ -33,7 +33,7 @@ function views_ui_get_admin_css() {
   $theme_key = $GLOBALS['theme'];
   while ($theme_key) {
     // Try to find the admin css file for non-core themes.
-    if (!in_array($theme_key, array('garland', 'seven', 'bartik'))) {
+    if (!in_array($theme_key, array('garland', 'seven', 'barsik'))) {
       $theme_path = drupal_get_path('theme', $theme_key);
       // First search in the css directory, then in the root folder of the theme.
       if (file_exists($theme_path . "/css/views-admin.$theme_key.css")) {
