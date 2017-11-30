@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * File Create and end email.
+ */
+
+/**
+ * Реализация hook_mail()
+ */
+function ak_sender_mail($key, &$message, $params) {
+  if ($key == 'test-key') {
+    $message['subject'] = "{$params['subject']}";
+    $message['body'][] = "{$params['content']}";
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function ak_sender_menu() {
+
+  $items['sender'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ak_sender_form'),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback: ak page form settings.
+ */
+function ak_sender_form($form, &$form_state) {
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Send'),
+  );
+  return $form;
+}
+
+/**
+ * Callback function.
+ */
+function ak_sender_form_submit($form, $form_state) {
+  drupal_mail(
+    'ak_sender',
+    'test-key',
+    'alexkriver@yandex.ru',
+    language_default(),
+    array(
+      'content' => 'Текст письма (бла бла бла)',
+      'subject' => 'Тема письма',
+    )
+  );
+}
