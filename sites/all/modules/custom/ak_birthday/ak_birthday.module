@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * File Create and end email.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function ak_birthday_cron() {
+  $today = date('d/m');
+  $users = entity_load('user');
+  foreach ($users as $user) {
+    $birthday = format_date(strtotime($user->field_date['und'][0]['value']), 'custom', 'd/m');
+    if (!empty($user->field_date) && $birthday == $today) {
+      drupal_mail(
+        'ak_sender',
+        'test-key',
+        $user->mail,
+        language_default(),
+        array(
+          'content' => 'Dear, ' . $user->name . '. Happy birthday to you.',
+          'subject' => 'Happy birthday',
+        )
+      );
+    }
+  }
+
+}
