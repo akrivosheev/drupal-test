@@ -9,7 +9,6 @@
  * Implements hook_menu().
  */
 function ak_alert_menu() {
-  drupal_add_js('js/alert.js');
   $items['js-alert'] = array(
     'page callback' => 'ak_alert_page_content',
     'access callback' => TRUE,
