@@ -22,13 +22,12 @@ function ak_test_cache_menu() {
  * Page content.
  */
 function ak_test_cache_page_content() {
-
+  global $user;
   $name = '';
   if (!empty(cache_get('ak_test_cache'))) {
     $name = cache_get('ak_test_cache')->data;
   }
   else {
-    global $user;
     ak_test_cache_set_name($user->name);
   }
 
