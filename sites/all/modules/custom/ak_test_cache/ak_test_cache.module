@@ -11,7 +11,7 @@
 function ak_test_cache_menu() {
   $items['testcache'] = array(
     'page callback' => 'ak_test_cache_page_content',
-    'access callback' => TRUE,
+    'access callback' => 'user_is_logged_in',
     'type' => MENU_CALLBACK,
   );
 
@@ -39,9 +39,7 @@ function ak_test_cache_page_content() {
  * Implements hook_user_update().
  */
 function ak_test_cache_user_update(&$edit, $account, $category) {
-  if ($edit = 'name') {
-    ak_test_cache_set_name($account->name);
-  }
+  ak_test_cache_set_name($account->name);
 }
 
 /**
