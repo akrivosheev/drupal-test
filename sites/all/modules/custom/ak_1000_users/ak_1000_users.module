@@ -121,7 +121,6 @@ function ak_1000_users_operation(&$context) {
     }
     else {
       // Make array with already exist user.
-      $list_exist_users[] = $data[1];
       $context['results']['list_exist'][] = $data[1];
     }
 
