@@ -1,0 +1,4 @@
+name = Custom Page with alert
+description = open page and look to alert
+core = 7.x
+package = Custom
