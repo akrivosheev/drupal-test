@@ -1,0 +1,169 @@
+<?php
+
+/**
+ * @file
+ * Ak_1000_users.
+ */
+
+define('AK_1000_USERS_FILE_PATH', 'sites/default/files/users.csv');
+
+/**
+ * Implements hook_menu().
+ */
+function ak_1000_users_menu() {
+  $items['import-1000'] = array(
+    'title' => 'Import 1000 users',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ak_1000_users_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    'menu_name' => 'main-menu',
+  );
+  return $items;
+}
+
+/**
+ * CSV import form.
+ */
+function ak_1000_users_form() {
+  $form = array();
+  $form['file'] = array(
+    '#type' => 'managed_file',
+    '#title' => 'file',
+    '#description' => 'Choose file with extension csv',
+    '#upload_location' => 'public://',
+    '#upload_validators' => array(
+      'file_validate_extensions' => array('csv'),
+    ),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Start import'),
+  );
+
+  return $form;
+}
+
+/**
+ * Form validate callback.
+ */
+function ak_1000_users_validate($form, &$form_state) {
+  $validators = array(
+    'file_validate_extensions' => array('csv'),
+  );
+
+  if ($file = file_save_upload('file', $validators, 'public://')) {
+    $form_state['values']['file'] = $file;
+  }
+  else {
+    form_set_error('file', 'File was not uploaded');
+  }
+}
+
+/**
+ * CSV import start.
+ */
+function ak_1000_users_form_submit($form, &$form_state) {
+
+  $batch = array(
+    'operations' => array(
+      array('ak_1000_users_operation', array()),
+    ),
+    'finished' => 'ak_1000_users_batch_finished',
+    'title' => t('Processing CSV'),
+    'init_message' => t('CSV Batch is starting.'),
+    'progress_message' => t('Processed @current out of @total.'),
+    'error_message' => t('CSV Batch has encountered an error.'),
+  );
+  batch_set($batch);
+}
+
+/**
+ * CSV operation.
+ */
+function ak_1000_users_operation(&$context) {
+
+  if (!isset($context['sandbox']['progress'])) {
+    $file = AK_1000_USERS_FILE_PATH;
+    $linecount = 0;
+    $handle = fopen($file, "r");
+    while (!feof($handle)) {
+      $line = fgets($handle);
+      $linecount++;
+    }
+    fseek($handle, 0);
+
+    $context['sandbox']['progress'] = 0;
+    $context['sandbox']['position'] = 0;
+    $context['sandbox']['max'] = $linecount;
+  }
+
+  $limit = 100;
+
+  if (!isset($handle)) {
+    $file = AK_1000_USERS_FILE_PATH;
+    $handle = fopen($file, "r");
+    fseek($handle, $context['sandbox']['position']);
+  }
+
+  $count = 0;
+
+  while ($data = fgetcsv($handle, 1000, ",")) {
+    // Check on exist name.
+    $is_name_exist = db_select('users')
+      ->condition('name', $data[1])
+      ->countQuery()
+      ->execute()
+      ->fetchField();
+    if ($is_name_exist == 0) {
+      // Create user.
+      ak_1000_users_save_user($data[1], $data[2]);
+    }
+    else {
+      // Make array with already exist user.
+      $list_exist_users[] = $data[1];
+      $context['results']['list_exist'][] = $data[1];
+    }
+
+    $context['sandbox']['progress']++;
+    $count++;
+    if ($count >= $limit) {
+      break;
+    }
+  }
+
+  $context['sandbox']['position'] = ftell($handle);
+
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }
+}
+
+/**
+ * Save user.
+ */
+function ak_1000_users_save_user($name, $password) {
+  $new_user = array(
+    'name' => $name,
+    'pass' => $password,
+    'status' => 1,
+    'roles' => array(
+      DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+    ),
+  );
+  user_save('', $new_user);
+}
+
+/**
+ * CSV finish.
+ */
+function ak_1000_users_batch_finished($success, $results, $operations) {
+
+  if ($success) {
+    $message = implode(', ', $results['list_exist']) . ' already exist';
+  }
+  else {
+    $message = t('Finished with an error.');
+  }
+  drupal_set_message($message);
+}
