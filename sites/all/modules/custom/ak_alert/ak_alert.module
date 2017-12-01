@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Page with alert.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ak_alert_menu() {
+  $items['js-alert'] = array(
+    'page callback' => 'ak_alert_page_content',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Page content.
+ */
+function ak_alert_page_content() {
+  drupal_add_js(drupal_get_path('module', 'ak_alert') . '/js/alert.js');
+  return 'Где мой alert';
+}
