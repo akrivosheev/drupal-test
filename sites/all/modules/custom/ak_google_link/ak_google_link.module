@@ -6,26 +6,6 @@
  */
 
 /**
- * Implements hook_menu().
- */
-function ak_google_link_menu() {
-  $items['ak-token'] = array(
-    'page callback' => 'ak_google_link_page_content',
-    'access callback' => 'user_is_logged_in',
-    'type' => MENU_CALLBACK,
-  );
-
-  return $items;
-}
-
-/**
- * Page content.
- */
-function ak_google_link_page_content() {
-  return 'ggggggggggggg';
-}
-
-/**
  * Implements hook_token_info().
  */
 function ak_google_link_token_info() {
