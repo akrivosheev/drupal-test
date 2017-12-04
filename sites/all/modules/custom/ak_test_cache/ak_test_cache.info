@@ -1,0 +1,4 @@
+name = Test cache page
+description = save name to cache
+core = 7.x
+package = Custom

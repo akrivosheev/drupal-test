@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Page with alert.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ak_test_cache_menu() {
+  $items['testcache'] = array(
+    'page callback' => 'ak_test_cache_page_content',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Page content.
+ */
+function ak_test_cache_page_content() {
+  global $user;
+  $name = '';
+  if (!empty(cache_get('ak_test_cache'))) {
+    $name = cache_get('ak_test_cache')->data;
+  }
+  else {
+    ak_test_cache_set_name($user->name);
+  }
+
+  return 'Hello, ' . $name;
+}
+
+/**
+ * Implements hook_user_update().
+ */
+function ak_test_cache_user_update(&$edit, $account, $category) {
+  ak_test_cache_set_name($account->name);
+}
+
+/**
+ * Set username to cache.
+ */
+function ak_test_cache_set_name($name) {
+  cache_set('ak_test_cache', $name, 'cache', REQUEST_TIME + 60 * 20);
+}
