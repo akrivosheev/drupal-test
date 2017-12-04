@@ -1,0 +1,4 @@
+name = Plugin adding
+description = Plugin
+core = 7.x
+package = Custom

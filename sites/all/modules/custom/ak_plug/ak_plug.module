@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Page.
+ */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function ak_plug_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'panels' && !empty($plugin)) {
+    return 'plugins/' . $plugin;
+  }
+
+  if ($module == 'ctools' && !empty($plugin)) {
+    return 'plugins/' . $plugin;
+  }
+}
