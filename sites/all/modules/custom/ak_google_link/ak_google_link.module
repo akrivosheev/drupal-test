@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Page with token.
+ */
+
+/**
+ * Implements hook_token_info().
+ */
+function ak_google_link_token_info() {
+
+  $type = array(
+    'name' => t('Global'),
+    'description' => t('Global data.'),
+  );
+
+  $global['google-link'] = array(
+    'name' => t('Google link'),
+    'description' => t('Link to gogle'),
+  );
+
+  return array(
+    'types' => array('global' => $type),
+    'tokens' => array('global' => $global),
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function ak_google_link_tokens($type, $tokens, array $data = array(), array $options = array()) {
+
+  if ($type == 'global') {
+    foreach ($tokens as $name => $original) {
+      if ($name = 'google-link') {
+        $replacements[$original] = 'https://www.google.com';
+      }
+    }
+
+  }
+
+  return $replacements;
+}
