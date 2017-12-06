@@ -40,10 +40,7 @@ function theme_ak_plug_border_style_render_region($vars) {
  * Render pane.
  */
 function theme_ak_plug_border_style_render_pane($vars) {
-
   $output = '';
-  $content = $vars['content'];
-  $content->css_class .= 'red-border';
   if (!empty($vars['content']->content)) {
     $output = theme('panels_pane', array(
       'content' => $vars['content'],
@@ -54,6 +51,5 @@ function theme_ak_plug_border_style_render_pane($vars) {
     // Just stick a box around the standard theme_panels_pane.
     $output = theme('blue-border', array('content' => $output));
   }
-
   return $output;
 }
