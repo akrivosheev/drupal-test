@@ -9,8 +9,6 @@
 ?>
 <div class="red-border">
 <?php foreach ($content as $item): ?>
-    <div class="blue-border">
       <?php print $item; ?>
-    </div>
 <?php endforeach; ?>
 </div>
