@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * @file
+ * Content showing results.
+ */
+
+///**
+// * Implements hook_menu().
+// */
+//function unl_test_menu() {
+//  $items['test5'] = array(
+//    'page callback' => 'unl_test_page_content',
+//    'access callback' => TRUE,
+//    'type' => MENU_CALLBACK,
+//  );
+//
+//  return $items;
+//}
+
+/**
+ * Page content.
+ */
+function unl_test_page_content() {
+  return 'Где мой alert';
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function unl_test_ctools_plugin_directory($module, $plugin) {
+
+  if ($module == 'ctools' && !empty($plugin)) {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function unl_test_theme() {
+  drupal_add_js(drupal_get_path('module', 'unl_test') . '/js/changeColor.js');
+  return array(
+    'unl_test' => array(
+      'variables' => array(
+        'vars' => NULL,
+      ),
+      'template' => 'link-list',
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function unl_test_menu() {
+
+  $items['color_links/%'] = array(
+    'title' => 'color links',
+    'page callback' => 'unl_test_ajax_callback',
+    'delivery callback' => 'ajax_deliver',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+/**
+ * Menu callback.
+ */
+function unl_test_ajax_callback() {
+
+  $commands = array();
+  $commands[] = ajax_command_alert('Your data have been saved, check logs');
+  $commands[] = array(
+    'command' => 'color_links',
+  );
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
