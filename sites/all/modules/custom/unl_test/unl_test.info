@@ -2,3 +2,5 @@ name = Unl Test
 description = It changes color
 core = 7.x
 package = Custom
+
+dependencies[] = panels

@@ -5,26 +5,6 @@
  * Content showing results.
  */
 
-///**
-// * Implements hook_menu().
-// */
-//function unl_test_menu() {
-//  $items['test5'] = array(
-//    'page callback' => 'unl_test_page_content',
-//    'access callback' => TRUE,
-//    'type' => MENU_CALLBACK,
-//  );
-//
-//  return $items;
-//}
-
-/**
- * Page content.
- */
-function unl_test_page_content() {
-  return 'Где мой alert';
-}
-
 /**
  * Implements hook_ctools_plugin_directory().
  */
@@ -70,7 +50,6 @@ function unl_test_menu() {
 function unl_test_ajax_callback() {
 
   $commands = array();
-  $commands[] = ajax_command_alert('Your data have been saved, check logs');
   $commands[] = array(
     'command' => 'color_links',
   );

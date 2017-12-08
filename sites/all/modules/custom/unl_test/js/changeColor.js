@@ -1,20 +1,22 @@
 (function($) {
 
 Drupal.ajax.prototype.commands.color_links = function(ajax, response, status) {
-    alert('ГАУ!!!');
-    debugger;
-    var arr = jQuery(".item-link");
+    var arr = jQuery(".link-list a");
+    var random_color = getRandomColor();
+    arr.css("color", random_color);
 
-    $.each( arr, function ( index, value ) {
-        var b = 4;
-        var c = 6;
-        // alert( index + ": " + value );
-        value.style.color = 'red';
-    });
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+};
 
-    jQuery(".unl-test-change-color").trigger('reset');
-}
+setInterval(function() {
+    Drupal.ajax.prototype.commands.color_links()
+}, 3000);
 
 }(jQuery));
-
-
