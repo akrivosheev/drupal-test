@@ -16,30 +16,16 @@ function unl_test_ctools_plugin_directory($module, $plugin) {
 }
 
 /**
- * Implements hook_theme().
- */
-function unl_test_theme() {
-  drupal_add_js(drupal_get_path('module', 'unl_test') . '/js/changeColor.js');
-  return array(
-    'unl_test' => array(
-      'variables' => array(
-        'vars' => NULL,
-      ),
-      'template' => 'link-list',
-    ),
-  );
-}
-
-/**
  * Implements hook_menu().
  */
 function unl_test_menu() {
 
-  $items['color_links/%'] = array(
+  $items['color_links'] = array(
     'title' => 'color links',
     'page callback' => 'unl_test_ajax_callback',
     'delivery callback' => 'ajax_deliver',
     'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
   return $items;
 }
@@ -48,14 +34,21 @@ function unl_test_menu() {
  * Menu callback.
  */
 function unl_test_ajax_callback() {
-
+  $color = unl_test_return_random_color();
   $commands = array();
   $commands[] = array(
     'command' => 'color_links',
+    'color' => $color,
   );
-
   return array(
     '#type' => 'ajax',
     '#commands' => $commands,
   );
+}
+
+/**
+ * Get random color code.
+ */
+function unl_test_return_random_color() {
+  return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
 }
