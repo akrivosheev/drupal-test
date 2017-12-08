@@ -4,7 +4,7 @@
  * @file
  * Display content with list of links.
  *
- * - $vars: The content of the box.
+ * - $variables: The content.
  */
 ?>
 

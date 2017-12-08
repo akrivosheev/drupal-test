@@ -33,26 +33,3 @@ function unl_test_content_type_render($subtype, $conf, $args, $context) {
   $block->content = theme('unl_test', array('content' => menu_load_links('main-menu'), 'ajax_link' => $ajax_link));
   return $block;
 }
-
-/**
- * Edit form callback for the content type.
- */
-function unl_test_edit_form($form, &$form_state) {
-  $conf = $form_state['conf'];
-  $form['text'] = array(
-    '#type' => 'textarea',
-    '#title' => t('List of the links'),
-    '#default_value' => !empty($conf['text']) ? $conf['text'] : '',
-  );
-
-  return $form;
-}
-
-/**
- * Submit callback for the example_text_edit_form().
- */
-function unl_test_edit_form_submit($form, &$form_state) {
-  $form_state['conf'] = array(
-    'text' => $form_state['values']['text'],
-  );
-}
