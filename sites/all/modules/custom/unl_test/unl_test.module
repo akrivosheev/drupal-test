@@ -20,7 +20,7 @@ function unl_test_ctools_plugin_directory($module, $plugin) {
  */
 function unl_test_menu() {
 
-  $items['color_links'] = array(
+  $items['color_links/%'] = array(
     'title' => 'color links',
     'page callback' => 'unl_test_ajax_callback',
     'delivery callback' => 'ajax_deliver',
@@ -34,6 +34,7 @@ function unl_test_menu() {
  * Menu callback.
  */
 function unl_test_ajax_callback() {
+
   $color = unl_test_return_random_color();
   $commands = array();
   $commands[] = array(

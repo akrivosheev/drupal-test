@@ -23,10 +23,6 @@ function unl_test_content_type_render($subtype, $conf, $args, $context) {
   $block = new stdClass();
   $block->module = t('unl_test');
   $block->title = t('Links list');
-
-  $block->content = theme('item_list', array(
-    'content' => menu_load_links('main-menu'),
-  ));
   $block->content = theme('links', array('links' => menu_main_menu(), 'attributes' => array('class' => 'links main-links')));
   return $block;
 }

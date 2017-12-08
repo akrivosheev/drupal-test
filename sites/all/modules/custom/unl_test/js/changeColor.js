@@ -11,7 +11,7 @@
     Drupal.behaviors.unl_test = {
         attach: function (context, settings) {
             setInterval(function() {
-                var url = "/color_links";
+                var url = "/color_links/nojs";
                 var ajax = new Drupal.ajax(false, false, {url : url});
                 ajax.eventResponse(ajax, {});
                 }, 3000);
