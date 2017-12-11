@@ -5,7 +5,6 @@
         var arr = jQuery(".links.main-links a");
         var color = response.color;
         arr.css("color", color);
-        console.log(response.color);
     };
 
     Drupal.behaviors.unl_test = {

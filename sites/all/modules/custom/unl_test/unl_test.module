@@ -23,6 +23,7 @@ function unl_test_menu() {
   $items['color_links/%'] = array(
     'title' => 'color links',
     'page callback' => 'unl_test_ajax_callback',
+    'page arguments' => array(1),
     'delivery callback' => 'ajax_deliver',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -33,7 +34,11 @@ function unl_test_menu() {
 /**
  * Menu callback.
  */
-function unl_test_ajax_callback() {
+function unl_test_ajax_callback($mode) {
+  if ($mode != 'ajax') {
+    drupal_set_message('Enable Javascript');
+    drupal_goto(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '<front>');
+  }
 
   $color = unl_test_return_random_color();
   $commands = array();
