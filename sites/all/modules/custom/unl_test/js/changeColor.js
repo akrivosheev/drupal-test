@@ -2,9 +2,9 @@
 
     Drupal.ajax.prototype.commands.color_links = function(ajax, response, status) {
 
-        var arr = jQuery(".links.main-links a");
+        var arrayOfLinks = jQuery(".links.main-links a");
         var color = response.color;
-        arr.css("color", color);
+        arrayOfLinks.css("color", color);
     };
 
     Drupal.behaviors.unl_test = {
