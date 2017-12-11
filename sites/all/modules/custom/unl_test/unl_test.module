@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Content showing results.
+ */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function unl_test_ctools_plugin_directory($module, $plugin) {
+
+  if ($module == 'ctools' && !empty($plugin)) {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function unl_test_menu() {
+
+  $items['color_links/%'] = array(
+    'title' => 'color links',
+    'page callback' => 'unl_test_ajax_callback',
+    'page arguments' => array(1),
+    'delivery callback' => 'ajax_deliver',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Menu callback.
+ */
+function unl_test_ajax_callback($mode) {
+  if ($mode != 'ajax') {
+    drupal_set_message('Enable Javascript');
+    drupal_goto(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '<front>');
+  }
+
+  $color = unl_test_return_random_color();
+  $commands = array();
+  $commands[] = array(
+    'command' => 'color_links',
+    'color' => $color,
+  );
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+/**
+ * Get random color code.
+ */
+function unl_test_return_random_color() {
+  return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+}
