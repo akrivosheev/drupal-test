@@ -12,15 +12,21 @@ $plugin = array(
   'title' => t('False on unix even'),
   'description' => t('Control access by checking time'),
   'callback' => 'bdyax_test_even_ctools_access_check',
+  'all contexts' => TRUE,
+  'required context' => new ctools_context_required(t('Add context plugin with TRUE/FALSE'), 'bdyax_test'),
 );
 
 /**
  * Check for access.
  */
 function bdyax_test_even_ctools_access_check($conf, $context) {
-  // Get current Time.
-  $current_time = time();
-  // Check if time even by division by two and the comparison with 0.
-  $is_even = $current_time % 2 == 0;
-  return !$is_even;
+
+  $access = TRUE;
+  foreach ($context as $item) {
+    if ($item->type == 'bdyax_test' && $item->is_even) {
+      $access = FALSE;
+      break;
+    }
+  }
+  return $access;
 }
