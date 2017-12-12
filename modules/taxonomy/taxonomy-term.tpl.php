@@ -9,8 +9,8 @@
  *   instead.
  * - $content: An array of items for the content of the term (fields and
  *   description). Use render($content) to print them all, or print a subset
- *   such as render($content['field_example']). Use
- *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   such as render($content['vimeo_example']). Use
+ *   hide($content['vimeo_example']) to temporarily suppress the printing of a
  *   given element.
  * - $term_url: Direct URL of the current term.
  * - $term_name: Name of the current term.

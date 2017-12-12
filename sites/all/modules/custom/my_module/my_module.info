@@ -1,0 +1,4 @@
+name = Vimeo field
+description = Add Field offering to show image-link to vimeo
+package = Custom
+core = 7.x

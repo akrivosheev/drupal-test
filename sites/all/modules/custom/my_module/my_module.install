@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the vimeo_example module.
+ */
+
+
+function my_module_field_schema($field) {
+  $schema = array();
+  $schema['columns']['url'] = array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+  );
+  $schema['columns']['code'] = array(
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+  );
+  return $schema;
+}
