@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * @file
+ * New field information.
+ */
+
+function my_module_field_info() {
+  return array(
+    'my_field_name' => array(
+      'label' => t('My Field'),
+      'description' => t('Description of My Field.'),
+      'settings' => array('max_length' => 255),
+      'instance_settings' => array(
+        'text_processing' => 0,
+      ),
+      'default_widget' => 'options_select',
+      'default_formatter' => 'states_field_options',
+    ),
+  );
+}
+
+function my_module_field_widget_info_alter(&$info) {
+  $widgets = array(
+    'options_select' => array('my_field_type'),
+  );
+  foreach ($widgets as $widget => $field_types) {
+    $info[$widget]['field types'] = array_merge($info[$widget]['field types'], $field_types);
+  }
+}
+
+function my_module_element_validate($element, &$form_state) {
+  switch ($element['#type']) {
+    case 'textfield':
+      if ($element['#value'] == '') {
+        form_error($element, t('Case Name may not be blank.'));
+      }
+      break;
+    case 'checkboxes':
+      if (empty($element['#value'])) {
+        form_error($element, t('You must give at least one role access to this state.'));
+      }
+      break;
+  }
+}
+
+function my_module_options_list($field, $instance, $entity_type, $entity) {
+  return array('option_1', 'option_2');
+}
+
+function states_field_field_formatter_info() {
+  return array(
+    'my_field_default' => array(
+      'label' => t('Default'),
+      'field types' => array('my_field_name'),
+    ),
+  );
+}
+
+function my_module_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  //Currently we only have one display option, use switch
+  //to prepare for future options.
+  switch ($display['type']) {
+    case 'my_field_default':
+      foreach ($items as $delta => $item) {
+        if (isset($options[$item['option']]['option'])) {
+          $output = field_filter_xss($options[$item['option']]['option']);
+        }
+        else {
+          $output = "Not Supplied";
+        }
+        $element[$delta] = array('#markup' => $output);
+      }
+      break;
+    default:
+  }
+  return $element;
+}
