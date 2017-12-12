@@ -4,5 +4,3 @@ core = 7.x
 package = Custom
 
 dependencies[] = panels
-
-plugins[panels][styles] = panels/styles
