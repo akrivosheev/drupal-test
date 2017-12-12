@@ -21,7 +21,6 @@ function bdyax_test_context_plugin($empty, $data = NULL, $conf = FALSE) {
   // Get current Time.
   $current_time = time();
   // Check if time even by division by two and the comparison with 0.
-  $is_even = $current_time % 2 == 0;
-  $context->is_even = $is_even;
+  $context->is_even = $current_time % 2 == 0;
   return $context;
 }
