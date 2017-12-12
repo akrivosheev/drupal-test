@@ -39,7 +39,14 @@ function results_bdyax_test_default_page_manager_pages() {
     'body_classes_to_add' => '',
     'css_id' => '',
     'css' => '',
-    'contexts' => array(),
+    'contexts' => array(
+      0 => array(
+        'identifier' => 'Add context plugin with TRUE/FALSE',
+        'keyword' => 'true_false',
+        'name' => 'bdyax_test',
+        'id' => 1,
+      ),
+    ),
     'relationships' => array(),
     'name' => 'panel',
   );

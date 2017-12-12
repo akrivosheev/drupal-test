@@ -1,5 +1,4 @@
-name = bdyax_test
-description = Show Panel Page with CCT
+name = results_bdyax_test
 core = 7.x
 package = Features
 dependencies[] = ctools
