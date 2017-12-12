@@ -17,7 +17,6 @@ $plugin = array(
  * Render callback for the content type.
  */
 function bdyax_test_context_plugin($empty, $data = NULL, $conf = FALSE) {
-
   $context = new ctools_context('bdyax_test');
   // Get current Time.
   $current_time = time();
