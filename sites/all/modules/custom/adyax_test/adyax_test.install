@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the adyax_test module.
+ */
+
+/**
+ * Implements hook_field_schema().
+ *
+ * Defines the database schema of the field, using the format used by the
+ * Schema API.
+ */
+function adyax_test_field_schema($field) {
+  $columns = array(
+    'url' => array('type' => 'varchar', 'length' => 255, 'not null' => FALSE),
+    'code' => array('type' => 'varchar', 'length' => 255, 'not null' => FALSE),
+  );
+  $indexes = array(
+    'url' => array('url'),
+    'code' => array('code'),
+  );
+  return array(
+    'columns' => $columns,
+    'indexes' => $indexes,
+  );
+}

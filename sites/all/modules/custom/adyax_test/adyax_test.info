@@ -1,0 +1,4 @@
+name = Field with vimeo link
+description = An implementation of a field to show video
+package = Custom
+core = 7.x
