@@ -22,13 +22,11 @@ function bdyax_test_text_content_type_render($subtype, $conf, $args, $context) {
 
   $block = new stdClass();
   $block->module = t('bdyax_test');
-  $content = 'TRUE';
   foreach ($context as $item) {
-    if ($item->type == 'bdyax_test' && $item->is_even) {
-      $content = 'FALSE';
+    if ($item->type == 'bdyax_test') {
+      $block->content = var_export($item->is_even, TRUE);
       break;
     }
   }
-  $block->content = $content;
   return $block;
 }

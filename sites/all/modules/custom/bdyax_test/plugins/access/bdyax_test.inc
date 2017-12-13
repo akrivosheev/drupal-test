@@ -21,10 +21,10 @@ $plugin = array(
  */
 function bdyax_test_even_ctools_access_check($conf, $context) {
 
-  $access = TRUE;
+  $access = FALSE;
   foreach ($context as $item) {
     if ($item->type == 'bdyax_test' && $item->is_even) {
-      $access = FALSE;
+      $access = TRUE;
       break;
     }
   }
