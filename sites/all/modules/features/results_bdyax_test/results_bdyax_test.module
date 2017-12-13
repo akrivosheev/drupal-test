@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the results_bdyax_test feature.
+ */
+
+include_once 'results_bdyax_test.features.inc';

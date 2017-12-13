@@ -1,0 +1,6 @@
+name = True/False Plugin adding
+description = Plugin show tru or false words, dependent from Unix timestamp
+core = 7.x
+package = Custom
+
+dependencies[] = panels
