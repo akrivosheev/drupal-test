@@ -17,3 +17,16 @@ function bdyax_test_ctools_plugin_directory($module, $plugin) {
     return 'plugins/' . $plugin;
   }
 }
+
+/**
+ * Delete {system} records for long-lost modules.
+ */
+function bdyax_test_update_7212() {
+  $modules = array(
+    'field_example',
+  );
+  db_delete('system')
+    ->condition('name', $modules, 'IN')
+    ->condition('type', 'module')
+    ->execute();
+}
