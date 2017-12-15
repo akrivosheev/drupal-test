@@ -1,0 +1,6 @@
+name = Unl Test 2
+description = It shows 3 nodes
+core = 7.x
+package = Custom
+
+dependencies[] = panels

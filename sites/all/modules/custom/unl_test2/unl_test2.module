@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Content showing results.
+ */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function unl_test2_ctools_plugin_directory($module, $plugin) {
+
+  if ($module == 'ctools' && !empty($plugin)) {
+    return 'plugins/' . $plugin;
+  }
+}
