@@ -18,12 +18,24 @@ $plugin = array(
  */
 function unl_test2_content_type_render($subtype, $conf, $args, $context) {
 
-  $nid = 4;
-  $node = node_load($nid);
-  kpr($node);
+  $result = db_select('node', 'n')
+    ->fields('n', ['nid'])
+    ->condition('status', 1)
+    ->execute()
+    ->fetchAllAssoc('nid');
+  $content = '';
+  if (isset($result)) {
+    $nodes = entity_load('node', array_rand($result, 3));
+    $content = drupal_render(
+      node_view_multiple(
+        $nodes
+      )
+    );
+
+  }
   $block = new stdClass();
-  $block->module = t('unl_test');
-  $block->title = t('Links list');
-  $block->content = 'fgddfgdfgdfg';
+  $block->module = t('unl_test2');
+  $block->title = t('3 nodes Title');
+  $block->content = $content;
   return $block;
 }
